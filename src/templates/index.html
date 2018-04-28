@@ -1,0 +1,101 @@
+<html>
+<head>
+{% load static %}
+<title>Celebrity app</title>
+<link rel="stylesheet" href='{% static "css/bootstrap.min.css" %}'>
+<link rel="stylesheet" href='{% static "fonts/fonts.css" %}'>
+<link rel="stylesheet" href='{% static "css/style.css" %}'>
+</head>
+<body>
+        <button type="button" style="float:left;margin:5px;" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">
+                Insert Data
+                <i class="fas fa-database"></i>
+              </button>
+
+
+    <div class="container">
+        <h2 class="text-info text-center">
+                <i class="fab fa-python"></i>
+            Django App</h2>
+
+
+
+
+
+
+              <div class="modal fade" id="myModal">
+                <div class="modal-dialog modal-sm">
+                  <div class="modal-content">
+
+
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+
+<form action="/form" method="post" enctype="multipart/form-data">
+{% csrf_token %}
+    <div class="form-group">
+    <input type="text" class="form-control" name="title" placeholder="Enter Title">
+    </div>
+
+    <div class="form-group">
+    <textarea name="desc" class="form-control" placeholder="Enter Description"></textarea>
+    </div>
+
+    <div class="form-group">
+    <label style="border:2px solid #0099ff;border-radius:5px;background:lightgrey;padding:5px;">
+    <input type="file" name="file" style="display:none;">pick up</label>
+    </div>
+                    <div class="form-group" style="float:left;">
+                        <button class="btn btn-info" type="submit">Submit</button>
+                    </div>
+                    <div class="form-group" style="float:right;">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>                        </div>
+                        </form>
+
+                    </div>
+
+
+                  </div></div></div>
+
+
+
+    <div class="row">
+{% for datas in data %}
+        <div class="col-sm-3">
+        <div class="card bg-info" style="cursor:pointer;margin-bottom:5px;height:300px;">
+        <div class="card-header">{{datas.title}}
+                <a href="delete/{{datas.id}}" style="color:white;font-size:20px;"><span style="float:right;"><i class="fa fa-window-close" aria-hidden="true"></i></span></a>
+        </div>
+        <div class="card-body" title="{{datas.created_at}}" data-toggle="popover" data-trigger="hover" data-content="{{datas.text}}" style="background:url('{{datas.photo}}');height:200px;background-repeat:no-repeat;
+        background-size: cover;">
+
+
+        </div>
+        <div class="card-footer">
+                <a href="update/{{datas.id}}" style="color:white;font-size:20px;"><span style="float:right;" class="text-default" data-toggle="modal" data-target="#myModal"><i class="fas fa-american-sign-language-interpreting" style="font-size:20px;"></i></span></a>
+        </div>
+
+        </div>
+        </div>
+{% endfor %}
+    </div>
+
+
+
+
+
+    </div>
+    <script type="text/javascript" src='{% static "js/jquery.min.js" %}'></script>
+    <script type="text/javascript" src='{% static "js/popper.min.js" %}'></script>
+    <script type="text/javascript" src='{% static "js/bootstrap.min.js" %}'></script>
+    <script type="text/javascript" src='{% static "icons/icons.js" %}'></script>
+
+    <script>
+            $(document).ready(function(){
+                $('[data-toggle="popover"]').popover();
+            });
+    </script>
+
+</body>
+</html>

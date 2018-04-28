@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Index Page</h1>
+    <p>{{ pk }}</p>
+
+
+<table style="border:2px solid #0099ff;">
+  <tr>
+    <th>sl no</th>
+    <th>country name</th>
+    <th>state name</th>
+    <th>city name</th>
+    <th>publication</th>
+
+  </tr>
+  {% for x in data %}
+  <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ x.country.country_name }}</td>
+    <td>{{ x.state.state_name }}</td>
+    <td>{{ x.city.city_name }}</td>
+    <td>{{ x.title }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+
+
+  </body>
+</html>

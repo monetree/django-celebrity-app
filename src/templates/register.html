@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+{{name}}
+<html>
+<head>
+<title>register - celebrity app</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="signup form" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+<link href="{% static 'css/register.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i" rel="stylesheet">
+
+</head>
+<body>
+	<!-- main -->
+	<div class="main-w3layouts wrapper">
+		<div class="main-agileinfo">
+			<div class="agileits-top"> 
+				<form action="/register" method="post"> 
+					
+					{% csrf_token %}
+						{{ form }}
+						{{ form.errors }}
+					<div class="wthree-text">  
+						<label class="anim">
+							<input type="checkbox" class="checkbox">
+							<span>I Agree To The Terms & Conditions</span> 
+						</label>  
+						<div class="clear"> </div>
+					</div>   
+					<input type="submit" value="SIGNUP">
+
+				</form>
+				<p>Don't have an Account? <a href="#"> Login Now!</a></p>
+			</div>	 
+		</div>	
+		<!-- copyright -->
+		<!-- //copyright -->
+		<ul class="w3lsg-bubbles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>	
+	<!-- //main --> 
+</body>
+
+<!-- Mirrored from p.w3layouts.com/demos_new/template_demo/09-05-2017/bubble_signup_form-demo_Free/590860654/web/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 30 Mar 2018 07:10:32 GMT -->
+</html>
